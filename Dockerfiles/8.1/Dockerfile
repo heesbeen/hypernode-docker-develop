@@ -37,5 +37,9 @@ RUN ln -sf /usr/local/bin/n98-magerun2-latest.phar /usr/local/bin/magerun2
 # Install Composer Global packages
 RUN composer global require mage2tv/magento-cache-clean
 
+# Configuring Nginx
+RUN wget https://raw.githubusercontent.com/heesbeen/hypernode-docker-develop/master/Assets/https.dummytag.hypernode.io.conf
+RUN mv https.dummytag.hypernode.io.conf /etc/nginx/sites/https.dummytag.hypernode.io.conf
+
 # Install Bash Profile additions
 RUN echo "alias cf2='~/.config/composer/vendor/bin/cache-clean.js -d /data/web/magento2 -w'" >> /data/web/.bash_aliases
